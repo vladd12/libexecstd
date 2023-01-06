@@ -1,5 +1,5 @@
 #pragma once
-#include <devices/device.hpp>
+#include "../devices/device.hpp"
 #include <memory>
 #include <vector>
 
@@ -19,7 +19,4 @@ namespace Context {
 
 	/// \brief Create context builder with default settings
 	std::shared_ptr<Builder> CreateDefaultBuilder();
-
-
-
 }
