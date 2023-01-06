@@ -14,7 +14,7 @@ option(EXECSTD_STATIC:BOOL "Build execstd as static library" OFF)
 
 set(INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME})
 message(STATUS "Library include path: ${INCLUDE_PATH}")
-file(GLOB_RECURSE public_headers ${PROJECT_SOURCE_DIR}/include/*.h*)
+file(GLOB_RECURSE public_headers ${INCLUDE_PATH}/*.hpp)
 
 #option(ENABLE_CUDA "Enable CUDA" ON)
 #if(ENABLE_CUDA)
@@ -24,11 +24,12 @@ file(GLOB_RECURSE public_headers ${PROJECT_SOURCE_DIR}/include/*.h*)
 set(EXECSTD_SOURCES
     src/core/builder.cpp
     src/core/context.cpp
-    src/backend/cpuwin.cpp
-    src/devices/device.cpp
 )
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
+add_subdirectory(src/backend)
+add_subdirectory(src/devices)
+
+include_directories(${INCLUDE_PATH})
 if (EXECSTD_STATIC)
     message(STATUS "execstd is static library")
     add_library(${PROJECT_NAME} STATIC ${public_headers} ${EXECSTD_SOURCES})
@@ -42,5 +43,3 @@ endif()
 
 target_compile_definitions(${PROJECT_NAME} PUBLIC -DCMAKE_CONFIG)
 target_include_directories(${PROJECT_NAME} INTERFACE ${PROJECT_SOURCE_DIR}/include)
-
-

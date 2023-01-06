@@ -4,19 +4,20 @@
 #include <vector>
 
 namespace Context {
-	/// \brief Class for building context of execution
-	class Builder {
-	private:
-		/// Forward declaration
-		friend class Context;
-		std::vector<Devices::Device> deviceList;
+/// \brief Class for building context of execution
+class libapi Builder
+{
+private:
+    /// Forward declaration
+    friend class Context;
+    std::vector<Devices::Device> deviceList;
 
-	public:
-		Builder() = delete;
-		explicit Builder(uint8_t cType = Core::DeviceType::All);
-		std::shared_ptr<Context> ToContext() const;
-	};
+public:
+    Builder() = delete;
+    explicit Builder(uint8_t cType = Core::DeviceType::All);
+    std::shared_ptr<Context> ToContext() const;
+};
 
-	/// \brief Create context builder with default settings
-	std::shared_ptr<Builder> CreateDefaultBuilder();
-}
+/// \brief Create context builder with default settings
+std::shared_ptr<Builder> CreateDefaultBuilder();
+} // namespace Context
