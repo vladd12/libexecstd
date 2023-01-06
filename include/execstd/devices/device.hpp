@@ -2,19 +2,16 @@
 #include "../core/core.hpp"
 
 namespace Devices {
-using DeviceType = Core::DeviceType;
-
 ///
-///
-class Device
+class libapi Device
 {
 protected:
-    DeviceType dType;
+    Core::DeviceType dType;
 
 public:
     Device() = default;
-    DeviceType GetDeviceType() const;
-    virtual void Foo() = 0;
+    auto GetDeviceType() -> decltype(dType) const { return dType; }
+    //    virtual void Foo() = 0;
 };
 
 } // namespace Devices

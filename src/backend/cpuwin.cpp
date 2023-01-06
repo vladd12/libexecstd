@@ -4,20 +4,20 @@
 
 namespace CPU {
 // \brief System Info Initialization
-LPSYSTEM_INFO InitSysInfo()
+libapi LPSYSTEM_INFO InitSysInfo()
 {
     auto sysInfo = new SYSTEM_INFO{0};
     GetSystemInfo(sysInfo);
     return sysInfo;
 }
 
-LPSYSTEM_INFO GetSysInfo()
+libapi LPSYSTEM_INFO GetSysInfo()
 {
     static const std::unique_ptr<SYSTEM_INFO> retVal(InitSysInfo());
     return retVal.get();
 }
 
-ArchProcType GetArchProcType()
+libapi ArchProcType GetArchProcType()
 {
     auto cpuArch = GetSysInfo()->wProcessorArchitecture;
     auto archProcType = ArchProcType::unknown;
@@ -41,18 +41,18 @@ ArchProcType GetArchProcType()
     return archProcType;
 }
 
-std::bitset<dwordSize> GetActiveProcBitMask()
+libapi std::bitset<dwordSize> GetActiveProcBitMask()
 {
     return std::bitset<dwordSize>(GetSysInfo()->dwActiveProcessorMask);
 }
 
-uint32_t GetProcNumber()
+libapi uint32_t GetProcNumber()
 {
     auto num = GetSysInfo()->dwNumberOfProcessors;
     return static_cast<uint32_t>(num);
 }
 
-std::vector<ProcFeature> GetProcFeatureList()
+libapi std::vector<ProcFeature> GetProcFeatureList()
 {
     static const DWORD features[] = {//
                                      PF_FLOATING_POINT_PRECISION_ERRATA,
@@ -108,7 +108,7 @@ std::vector<ProcFeature> GetProcFeatureList()
     return result;
 }
 
-void test()
+libapi void test()
 {
     auto sysInfo = GetSysInfo();
     std::cout << "wProcessorArchitecture: " << GetArchProcType()

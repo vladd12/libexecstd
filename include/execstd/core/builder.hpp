@@ -14,7 +14,7 @@ private:
 
 public:
     Builder() = delete;
-    explicit Builder(uint8_t cType = Core::DeviceType::All);
+    explicit Builder(uint8_t cType);
     std::shared_ptr<Context> ToContext() const;
 };
 

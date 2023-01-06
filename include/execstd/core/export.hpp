@@ -8,9 +8,9 @@
 #define DECL_IMPORT
 #endif
 
-#if defined(EXECSTD_EXPORTS)
+#if defined(LIB_EXPORT)
 #define libapi DECL_EXPORT
-#elif defined(EXECSTD_EXPORTS)
+#elif defined(LIB_IMPORT)
 #define libapi DECL_IMPORT
 #else
 #define libapi
