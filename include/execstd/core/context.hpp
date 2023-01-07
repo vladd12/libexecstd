@@ -12,6 +12,6 @@ public:
     Context(const Builder *builder);
 };
 
-std::shared_ptr<Context> CreateContext(Builder *builder = CreateDefaultBuilder().get());
+libapi std::shared_ptr<Context> CreateContext(Builder *builder = CreateDefaultBuilder().get());
 
 } // namespace Context

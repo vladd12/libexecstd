@@ -4,8 +4,8 @@
 #define DECL_EXPORT __declspec(dllexport)
 #define DECL_IMPORT __declspec(dllimport)
 #else
-#define DECL_EXPORT
-#define DECL_IMPORT
+#define DECL_EXPORT /**/
+#define DECL_IMPORT /**/
 #endif
 
 #if defined(LIB_EXPORT)
@@ -13,5 +13,5 @@
 #elif defined(LIB_IMPORT)
 #define libapi DECL_IMPORT
 #else
-#define libapi
+#define libapi /**/
 #endif

@@ -3,7 +3,7 @@
 
 TEST(MultiplyTests, TestIntegerOne_One)
 {
-    const auto expected = 1;
+    constexpr auto expected = 1;
     const auto actual = Core::multiply(1, 1);
     ASSERT_EQ(expected, actual);
 }

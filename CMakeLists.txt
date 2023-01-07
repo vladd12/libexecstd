@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Adding path for cmake scripts
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 # Option for compiling static library
-option(EXECSTD_STATIC:BOOL "Build execstd as static library" OFF)
+option(EXECSTD_STATIC "Build execstd as static library" OFF)
 
 # Collecting public headers for library
 set(INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -29,25 +29,41 @@ file(GLOB_RECURSE EXECSTD_HEADERS ${INCLUDE_PATH}/${PROJECT_NAME}/*.hpp)
 set(EXECSTD_SOURCES
     src/core/builder.cpp
     src/core/context.cpp
+    src/core/core.cpp
     src/backend/cpuwin.cpp
     src/devices/device.cpp
 )
 
+# Include directory with library's public headers
 include_directories(${INCLUDE_PATH})
+# Compilation static library
 if (EXECSTD_STATIC)
     message(STATUS "execstd is static library")
     add_library(${PROJECT_NAME} STATIC ${EXECSTD_HEADERS} ${EXECSTD_SOURCES})
     target_compile_definitions(${PROJECT_NAME} PUBLIC -DSTATIC_BUILD)
-else()
-    message(STATUS "execstd is shared library")
+else() # Compilation dynamic library
+    message(STATUS "execstd is dynamic library")
     add_library(${PROJECT_NAME} SHARED ${EXECSTD_HEADERS} ${EXECSTD_SOURCES})
     target_compile_definitions(${PROJECT_NAME} PRIVATE -DLIB_EXPORT)
     target_compile_definitions(${PROJECT_NAME} INTERFACE -DLIB_IMPORT)
 endif()
-
+# Library compilation settings
 target_compile_definitions(${PROJECT_NAME} PUBLIC -DCMAKE_CONFIG)
 target_include_directories(${PROJECT_NAME} INTERFACE ${INCLUDE_PATH})
 
 # Enabling testing for project
 enable_testing()
 add_subdirectory(tests)
+
+# Installation for library
+install(TARGETS
+    ${PROJECT_NAME}
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+)
+# Installation for library's headers
+install(FILES
+    ${EXECSTD_HEADERS}
+    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}"
+)

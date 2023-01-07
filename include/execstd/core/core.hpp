@@ -12,10 +12,14 @@ enum DeviceType : uint8_t {
     All = 7        ///< All devices (CPU, CUDA and OpenCL)
 };
 
+/*
+/// \brief Compile-time multiplying
 template<typename T>
-auto multiply(T &&left, T &&right) -> decltype(left * right)
+constexpr auto multiply(T &&left, T &&right) -> decltype(left * right)
 {
     return left * right;
 }
+*/
+libapi int multiply(int &&left, int &&right);
 
 } // namespace Core
