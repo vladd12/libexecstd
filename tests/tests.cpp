@@ -1,4 +1,5 @@
 #include <execstd/core/core.hpp>
+#include <execstd/devices/device.hpp>
 #include <gtest/gtest.h>
 
 TEST(MultiplyTests, TestIntegerOne_One)
@@ -20,4 +21,10 @@ TEST(MultiplyTests, TestIntegerZero_One)
     constexpr auto expected = 0;
     const auto actual = Core::multiply(0, 1);
     ASSERT_EQ(actual, expected);
+}
+
+TEST(CUDA_Tests, TestDeviceInfo)
+{
+    Devices::printCudaInfo();
+    ASSERT_EQ(true, true);
 }

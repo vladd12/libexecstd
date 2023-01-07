@@ -14,4 +14,6 @@ public:
     //    virtual void Foo() = 0;
 };
 
+libapi void printCudaInfo();
+
 } // namespace Devices

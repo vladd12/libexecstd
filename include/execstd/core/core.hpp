@@ -20,6 +20,7 @@ constexpr auto multiply(T &&left, T &&right) -> decltype(left * right)
     return left * right;
 }
 */
+
 libapi int multiply(int &&left, int &&right);
 
 } // namespace Core

@@ -20,11 +20,6 @@ set(INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/include)
 message(STATUS "execstd library include path: ${INCLUDE_PATH}")
 file(GLOB_RECURSE EXECSTD_HEADERS ${INCLUDE_PATH}/${PROJECT_NAME}/*.hpp)
 
-#option(ENABLE_CUDA "Enable CUDA" ON)
-#if(ENABLE_CUDA)
-#    add_subdirectory(src/cuda)
-#endif()
-
 # Collecting library sources
 set(EXECSTD_SOURCES
     src/core/builder.cpp
@@ -51,7 +46,17 @@ endif()
 target_compile_definitions(${PROJECT_NAME} PUBLIC -DCMAKE_CONFIG)
 target_include_directories(${PROJECT_NAME} INTERFACE ${INCLUDE_PATH})
 
+# CUDA option enabling, using CUDA devices
+option(ENABLE_CUDA "Enable CUDA" ON)
+if(ENABLE_CUDA)
+    add_subdirectory(src/cuda)
+    target_compile_definitions(${PROJECT_NAME} PUBLIC -DCUDA_ENABLE)
+    target_link_libraries(${PROJECT_NAME} PRIVATE cuda-internals)
+    include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src/cuda")
+endif()
+
 # Enabling testing for project
+include(CTest)
 enable_testing()
 add_subdirectory(tests)
 

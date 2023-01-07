@@ -1,3 +1,20 @@
 #include <execstd/devices/device.hpp>
 
-namespace Devices {} // namespace Devices
+#ifdef CUDA_ENABLE
+#include <device_info.hpp>
+#else
+#include <iostream>
+#endif
+
+namespace Devices {
+
+void printCudaInfo()
+{
+#ifdef CUDA_ENABLE
+    printDeviceInformation();
+#else
+    std::cout << "CUDA devices not found.\n";
+#endif
+}
+
+} // namespace Devices
