@@ -25,17 +25,13 @@ file(GLOB_RECURSE EXECSTD_HEADERS ${INCLUDE_PATH}/${PROJECT_NAME}/*.hpp)
 #    add_subdirectory(src/cuda)
 #endif()
 
+# Collecting library sources
 set(EXECSTD_SOURCES
     src/core/builder.cpp
     src/core/context.cpp
+    src/backend/cpuwin.cpp
+    src/devices/device.cpp
 )
-
-# Enabling testing for project
-#enable_testing()
-
-add_subdirectory(src/backend)
-add_subdirectory(src/devices)
-#add_subdirectory(tests)
 
 include_directories(${INCLUDE_PATH})
 if (EXECSTD_STATIC)
@@ -51,3 +47,7 @@ endif()
 
 target_compile_definitions(${PROJECT_NAME} PUBLIC -DCMAKE_CONFIG)
 target_include_directories(${PROJECT_NAME} INTERFACE ${INCLUDE_PATH})
+
+# Enabling testing for project
+enable_testing()
+add_subdirectory(tests)
