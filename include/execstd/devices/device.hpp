@@ -2,16 +2,18 @@
 #include "../core/core.hpp"
 
 namespace Devices {
+/// \brief Enumeration for representing general type of an device.
+using DeviceType = Core::DeviceType;
+
 ///
 class libapi Device
 {
 protected:
-    Core::DeviceType dType;
+    DeviceType deviceType;
 
 public:
     Device() = default;
-    auto GetDeviceType() -> decltype(dType) const { return dType; }
-    //    virtual void Foo() = 0;
+    const auto &getDeviceType() const { return deviceType; }
 };
 
 libapi void printCudaInfo();

@@ -2,16 +2,15 @@
 #include <execstd/runtime/builder.hpp>
 
 namespace Runtime {
-/// \brief
-/// \details
+/// \brief Class for representing runtime context.
 class libapi Context
 {
-private:
 public:
     Context() = delete;
     Context(const Builder *builder);
 };
+using ContextPtr = std::shared_ptr<Context>;
 
-libapi std::shared_ptr<Context> CreateContext(Builder *builder = CreateDefaultBuilder().get());
+libapi ContextPtr createContext(Builder *builder = createDefaultBuilder().get());
 
 } // namespace Runtime

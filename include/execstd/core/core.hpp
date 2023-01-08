@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <execstd/core/compiler.hpp>
 #include <execstd/core/export.hpp>
+#include <memory>
 
 namespace Core {
 /// \brief Enumeration for device's type definition

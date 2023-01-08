@@ -25,6 +25,7 @@ set(EXECSTD_SOURCES
     src/backend/cpuwin.cpp
     src/core/core.cpp
     src/devices/device.cpp
+    src/runtime/accelerator.cpp
     src/runtime/builder.cpp
     src/runtime/context.cpp
 )
