@@ -46,19 +46,25 @@ endif()
 target_compile_definitions(${PROJECT_NAME} PUBLIC -DCMAKE_CONFIG)
 target_include_directories(${PROJECT_NAME} INTERFACE ${INCLUDE_PATH})
 
-# CUDA option enabling, using CUDA devices
-option(ENABLE_CUDA "Enable CUDA" ON)
-if(ENABLE_CUDA)
+# Option for CUDA enabling and using CUDA devices
+option(CUDA_ENABLE "Enable CUDA" ON)
+if(CUDA_ENABLE)
+    message(STATUS "CUDA is available for using in project")
     add_subdirectory(src/cuda)
     target_compile_definitions(${PROJECT_NAME} PUBLIC -DCUDA_ENABLE)
-    target_link_libraries(${PROJECT_NAME} PRIVATE cuda-internals)
+    target_link_libraries(${PROJECT_NAME} PRIVATE cuda-internal)
     include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src/cuda")
 endif()
 
-# Enabling testing for project
-include(CTest)
-enable_testing()
-add_subdirectory(tests)
+# Option for tests enabling
+option(TESTS_ENABLE "Enable execstd tests" ON)
+if(TESTS_ENABLE)
+    # Enabling testing for project
+    message(STATUS "Tests compiling is enabled")
+    include(CTest)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
 
 # Installation for library
 install(TARGETS

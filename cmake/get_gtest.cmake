@@ -8,6 +8,6 @@ FetchContent_Declare(
 # Compiling googletest library
 FetchContent_MakeAvailable(googletest)
 
-# Import as GTest::GTest CMake package
+# Import as GTest::GTest package
 add_library(GTest::GTest INTERFACE IMPORTED)
 target_link_libraries(GTest::GTest INTERFACE gtest_main)
