@@ -1,9 +1,9 @@
 #pragma once
-#include "../devices/device.hpp"
+#include <execstd/devices/device.hpp>
 #include <memory>
 #include <vector>
 
-namespace Context {
+namespace Runtime {
 /// \brief Class for building context of execution
 class libapi Builder
 {
@@ -20,4 +20,4 @@ public:
 
 /// \brief Create context builder with default settings
 std::shared_ptr<Builder> CreateDefaultBuilder();
-} // namespace Context
+} // namespace Runtime

@@ -22,11 +22,11 @@ file(GLOB_RECURSE EXECSTD_HEADERS ${INCLUDE_PATH}/${PROJECT_NAME}/*.hpp)
 
 # Collecting library sources
 set(EXECSTD_SOURCES
-    src/core/builder.cpp
-    src/core/context.cpp
-    src/core/core.cpp
     src/backend/cpuwin.cpp
+    src/core/core.cpp
     src/devices/device.cpp
+    src/runtime/builder.cpp
+    src/runtime/context.cpp
 )
 
 # Include directory with library's public headers

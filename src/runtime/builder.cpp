@@ -1,9 +1,9 @@
 #include <bitset>
-#include <execstd/core/context.hpp>
+#include <execstd/runtime/context.hpp>
 
 #include <iostream>
 
-namespace Context {
+namespace Runtime {
 Builder::Builder(uint8_t dType)
 {
     std::bitset<4> flags(dType);
@@ -31,4 +31,4 @@ std::shared_ptr<Builder> CreateDefaultBuilder()
     return std::shared_ptr<Builder>(new Builder(Core::DeviceType::All));
 }
 
-} // namespace Context
+} // namespace Runtime

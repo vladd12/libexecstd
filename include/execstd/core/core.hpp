@@ -1,15 +1,16 @@
 #pragma once
-#include "export.hpp"
 #include <cstdint>
+#include <execstd/core/compiler.hpp>
+#include <execstd/core/export.hpp>
 
 namespace Core {
 /// \brief Enumeration for device's type definition
 enum DeviceType : uint8_t {
-    Undefined = 0, ///< Undefined device
-    CPU = 1,       ///< CPU device
-    CUDA = 2,      ///< CUDA device
-    OpenCL = 4,    ///< OpenCL device
-    All = 7        ///< All devices (CPU, CUDA and OpenCL)
+    Undefined = 0,            ///< Undefined device
+    CPU = 1 << 0,             ///< CPU device
+    CUDA = 1 << 1,            ///< CUDA device
+    OpenCL = 1 << 2,          ///< OpenCL device
+    All = CPU | CUDA | OpenCL ///< All devices (CPU, CUDA and OpenCL)
 };
 
 /*

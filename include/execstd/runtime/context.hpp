@@ -1,7 +1,7 @@
 #pragma once
-#include "builder.hpp"
+#include <execstd/runtime/builder.hpp>
 
-namespace Context {
+namespace Runtime {
 /// \brief
 /// \details
 class libapi Context
@@ -14,4 +14,4 @@ public:
 
 libapi std::shared_ptr<Context> CreateContext(Builder *builder = CreateDefaultBuilder().get());
 
-} // namespace Context
+} // namespace Runtime
