@@ -1,8 +1,6 @@
 #include <cuda_runtime_api.h>
 #include <device_info.hpp>
 #include <iostream>
-#include <thrust/device_vector.h>
-#include <thrust/host_vector.h>
 
 constexpr int notFound = -1;
 constexpr int errorCode = 9999;

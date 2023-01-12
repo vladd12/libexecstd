@@ -3,12 +3,18 @@ project(execstd-tests LANGUAGES CXX)
 # Getting googletest as GTest::GTest target
 include(get_gtest)
 
+# Collecting tests sources
+set(EXECSTD_TESTS_SOURCES
+    tests.cpp
+    util_index.cpp
+)
+
 # Compiling tests as executable file
-add_executable(${PROJECT_NAME} tests.cpp)
+add_executable(${PROJECT_NAME} ${EXECSTD_TESTS_SOURCES})
 # Linking googletest and execstd libraries
 target_link_libraries(${PROJECT_NAME} PUBLIC
     GTest::GTest
-    execstd
+    execstd::execstd
 )
 
 # Register test for ctest, see also:
