@@ -20,6 +20,8 @@ TEST(Detail_IsCorrectArgsNum, NegativeCompileTime_Test)
 
 TEST(Util_Index, TestCtor)
 {
-    Util::Index<std::uint16_t, 3> index3d;
+    int n = 1;
+    Util::Index<int, 3> index3d { 1, 2, 3 };
+    index3d[n];
     ASSERT_EQ(true, true);
 }

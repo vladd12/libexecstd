@@ -1,7 +1,8 @@
 #pragma once
 #include <execstd/runtime/builder.hpp>
 
-namespace Runtime {
+namespace Runtime
+{
 /// \brief Class for representing runtime context.
 class libapi Context
 {

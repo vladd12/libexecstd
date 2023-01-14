@@ -1,7 +1,8 @@
 #pragma once
-#include "../core/core.hpp"
+#include <execstd/core/core.hpp>
 
-namespace Devices {
+namespace Devices
+{
 /// \brief Enumeration for representing general type of an device.
 using DeviceType = Core::DeviceType;
 
@@ -13,7 +14,10 @@ protected:
 
 public:
     Device() = default;
-    const auto &getDeviceType() const { return deviceType; }
+    const auto &getDeviceType() const
+    {
+        return deviceType;
+    }
 };
 
 libapi void printCudaInfo();

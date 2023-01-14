@@ -3,7 +3,8 @@
 #include <memory>
 #include <vector>
 
-namespace Runtime {
+namespace Runtime
+{
 /// \brief Class for building context of execution.
 class libapi Builder
 {

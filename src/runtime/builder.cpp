@@ -1,9 +1,9 @@
 #include <bitset>
 #include <execstd/runtime/context.hpp>
-
 #include <iostream>
 
-namespace Runtime {
+namespace Runtime
+{
 Builder::Builder(uint8_t dType)
 {
     constexpr auto bitwise_size = sizeof(dType) * 8;

@@ -6,7 +6,8 @@
 #include <iostream>
 #endif
 
-namespace Devices {
+namespace Devices
+{
 
 void printCudaInfo()
 {

@@ -1,8 +1,11 @@
 #include <execstd/runtime/context.hpp>
 
-namespace Runtime {
+namespace Runtime
+{
 
-Context::Context(const Builder *builder) {}
+Context::Context(const Builder *builder)
+{
+}
 
 ContextPtr createContext(Builder *builder)
 {

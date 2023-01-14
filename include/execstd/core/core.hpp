@@ -4,9 +4,11 @@
 #include <execstd/core/export.hpp>
 #include <memory>
 
-namespace Core {
+namespace Core
+{
 /// \brief Enumeration for device's type definition
-enum DeviceType : uint8_t {
+enum DeviceType : uint8_t
+{
     Undefined = 0,            ///< Undefined device
     CPU = 1 << 0,             ///< CPU device
     CUDA = 1 << 1,            ///< CUDA device

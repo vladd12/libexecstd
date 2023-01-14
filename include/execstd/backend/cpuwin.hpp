@@ -1,5 +1,6 @@
 #pragma once
 #include "../core/export.hpp"
+
 #include <Windows.h>
 #include <bitset>
 #include <cstdint>
@@ -10,11 +11,13 @@
  *
  */
 
-namespace CPU {
+namespace CPU
+{
 constexpr auto dwordSize = sizeof(DWORD) * 8;
 
 /// \brief Enumeration for what?
-enum ArchProcType : uint16_t {
+enum ArchProcType : uint16_t
+{
     intel = PROCESSOR_ARCHITECTURE_INTEL,
     ia32 = PROCESSOR_ARCHITECTURE_IA32_ON_WIN64,
     ia64 = PROCESSOR_ARCHITECTURE_IA64,
@@ -29,7 +32,8 @@ enum ArchProcType : uint16_t {
 };
 
 /// \brief Just empty
-enum ProcFeature : uint16_t {
+enum ProcFeature : uint16_t
+{
     float_prec_errata = PF_FLOATING_POINT_PRECISION_ERRATA,
     float_emulated = PF_FLOATING_POINT_EMULATED,
     cmp_exchange_double = PF_COMPARE_EXCHANGE_DOUBLE,

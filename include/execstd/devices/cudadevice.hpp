@@ -1,8 +1,7 @@
 #pragma once
-#include <devices/device.hpp>
+#include <execstd/devices/device.hpp>
 
-namespace Devices {
-
-
+namespace Devices
+{
 
 }
