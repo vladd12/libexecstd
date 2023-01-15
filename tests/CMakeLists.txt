@@ -6,6 +6,7 @@ include(get_gtest)
 # Collecting tests sources
 set(EXECSTD_TESTS_SOURCES
     tests.cpp
+    util_compare.cpp
     util_index.cpp
 )
 

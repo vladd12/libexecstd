@@ -40,14 +40,14 @@ template <std::size_t N> //
 inline constexpr auto is_more_than_zero_v = is_more_than<N, 0>::value;
 
 /// \brief Implementation of constexpr operator for version.
-template <class F, std::size_t... I> constexpr void for_constexpr_impl(F &&func, std::index_sequence<I...>)
+template <class F, std::size_t... I> constexpr inline void for_constexpr_impl(F &&func, std::index_sequence<I...>)
 {
     (func(std::integral_constant<std::size_t, I> {}), ...);
 }
 
 /// \brief Constexpr operator for version.
 /// \see for_constexpr_impl
-template <size_t C, class F> constexpr void for_constexpr(F &&func)
+template <std::size_t C, class F> constexpr inline void for_constexpr(F &&func)
 {
     for_constexpr_impl(std::forward<F>(func), std::make_index_sequence<C> {});
 }
@@ -81,12 +81,20 @@ public:
         return result;
     }
 
-    constexpr const std::size_t dimension() const noexcept
+    const value_type size_rt() const noexcept
+    {
+        value_type result = 1;
+        for (std::size_t i = 0; i < _dimension; i++)
+            result = result * _indexes[i];
+        return result;
+    }
+
+    constexpr const auto dimension() const noexcept
     {
         return _dimension;
     }
 
-    constexpr std::size_t dimension() noexcept
+    constexpr auto dimension() noexcept
     {
         return _dimension;
     }
