@@ -67,7 +67,7 @@ TEST(Util_IndexClass, FillTest)
 
 TEST(Util_IndexClass, SizeTest)
 {
-    constexpr Util::Index3D test_index1 = { 1, 2, 3 };
+    constexpr Util::Index<int, 3> test_index1 = { 1, 2, 3 };
     constexpr auto actual1 = test_index1.size();
     constexpr decltype(actual1) expected1 = 1 * 2 * 3;
     ASSERT_EQ(expected1, actual1);

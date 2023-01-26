@@ -32,6 +32,8 @@ template <typename T> //
 class IComparable
 {
 private:
+    friend T;
+
     /// \brief Static casting of the current object to underlying type T.
     constexpr const T &toUnderlying() const noexcept
     {
@@ -45,13 +47,11 @@ private:
     }
 
     IComparable() = default;
-    ~IComparable<T>() = default;
-    IComparable<T>(const IComparable<T> &other) = default;
-    IComparable<T>(IComparable<T> &&other) = default;
-    IComparable<T> &operator=(const IComparable<T> &other) = default;
-    IComparable<T> &operator=(IComparable<T> &&other) = default;
-
-    friend T;
+    ~IComparable() = default;
+    IComparable(const IComparable<T> &other) = default;
+    IComparable(IComparable<T> &&other) = default;
+    IComparable &operator=(const IComparable<T> &other) = default;
+    IComparable &operator=(IComparable<T> &&other) = default;
 
 public:
     [[nodiscard]] constexpr bool operator==(const T &other) const noexcept
