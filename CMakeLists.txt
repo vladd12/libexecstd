@@ -31,6 +31,7 @@ set(EXECSTD_SOURCES
     src/runtime/builder.cpp
     src/runtime/context.cpp
     src/util/index.cpp
+    src/util/simple_index.cpp
 )
 
 # Include directory with library's public headers
